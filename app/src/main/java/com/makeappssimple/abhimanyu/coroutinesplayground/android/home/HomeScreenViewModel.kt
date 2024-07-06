@@ -3,16 +3,18 @@ package com.makeappssimple.abhimanyu.coroutinesplayground.android.home
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.makeappssimple.abhimanyu.coroutinesplayground.android.home.coroutines.jobSample
-import com.makeappssimple.abhimanyu.coroutinesplayground.android.home.coroutines.launchSample
-import com.makeappssimple.abhimanyu.coroutinesplayground.android.home.coroutines.runBlockingSample
+import com.makeappssimple.abhimanyu.coroutinesplayground.android.home.coroutines.coroutinesSample
+import com.makeappssimple.abhimanyu.coroutinesplayground.android.home.coroutines.threadInfo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeScreenViewModel : ViewModel() {
     init {
-        jobSample()
+        viewModelScope.launch {
+            Log.e("Abhi", "viewModelScope ${threadInfo()}")
+            coroutinesSample()
+        }
     }
 
     /**

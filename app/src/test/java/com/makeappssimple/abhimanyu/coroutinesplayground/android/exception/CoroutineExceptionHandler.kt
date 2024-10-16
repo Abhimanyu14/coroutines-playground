@@ -9,7 +9,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import java.lang.RuntimeException
 
-class CoroutineExceptionHandler {
+internal class CoroutineExceptionHandler {
     @Test
     fun uncaughtException() {
         runBlocking {

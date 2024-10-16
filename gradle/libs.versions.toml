@@ -1,20 +1,40 @@
 [versions]
-agp = "8.6.1"
-kotlin = "1.9.0"
+agp = "8.5.1"
+kotlin = "2.0.0"
 coreKtx = "1.13.1"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+lifecycleRuntimeKtx = "2.8.6"
+coroutines = "1.8.0"
+compose-version = "1.7.1"
+activityCompose = "1.9.2"
+composeBom = "2024.09.03"
+navigationCompose = "2.8.2"
+ksp = "2.0.0-1.0.21"
+hilt-navigation-compose = "1.2.0"
+hilt-android = "2.51.1"
+hilt-compiler = "2.51.1"
+hilt-work = "1.0.0"
+
+# Testing
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.8.0"
-activityCompose = "1.9.0"
-composeBom = "2024.04.01"
-navigationCompose = "2.7.7"
+test-core = "1.6.0"
+test-junit = "1.2.1"
+test-runner = "1.6.1"
+mockito-kotlin = "5.3.1"
+core-testing = "2.2.0"
+turbine = "1.1.0"
+hilt-android-testing = "2.51.1"
+kakaocup-compose = "0.3.0"
+konsist = "0.15.1"
+
+plugin-hilt-android = "2.51.1"
+plugin-ksp = "2.0.0-1.0.21"
+plugin-kotlin-android = "2.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -27,7 +47,35 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+
+ksp = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "ksp" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-android" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt-compiler" }
+hilt-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hilt-work" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt-android-testing" }
+
+# Tesing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+test-core = { group = "androidx.test", name = "core-ktx", version.ref = "test-core" }
+test-rules = { group = "androidx.test", name = "rules", version.ref = "test-core" }
+test-truth = { group = "androidx.test.ext", name = "truth", version.ref = "test-core" }
+test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "test-junit" }
+test-runner = { group = "androidx.test", name = "runner", version.ref = "test-runner" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito-kotlin" }
+core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "core-testing" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "compose-version" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose-version" }
+kakaocup-compose = { group = "io.github.kakaocup", name = "compose", version.ref = "kakaocup-compose" }
+konsist = { group = "com.lemonappdev", name = "konsist", version.ref = "konsist" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+ksp = { id = "com.google.devtools.ksp", version.ref = "plugin-ksp" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "plugin-hilt-android" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "plugin-kotlin-android" }

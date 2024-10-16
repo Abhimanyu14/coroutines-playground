@@ -3,7 +3,7 @@ package com.makeappssimple.abhimanyu.coroutinesplayground.android.home.coroutine
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
-fun runBlockingSample() {
+public fun runBlockingSample() {
     runBlocking {
         logInfo("main runBlocking")
 

@@ -4,14 +4,14 @@ import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 
-fun threadInfo(): String {
+public fun threadInfo(): String {
     return "Thread Name => ${Thread.currentThread().name}"
 }
 
-fun CoroutineScope.coroutineInfo(): String {
+public fun CoroutineScope.coroutineInfo(): String {
     return "Scope => $this \n Context => ${this.coroutineContext} \n Job => ${this.coroutineContext[Job]}  "
 }
 
-fun CoroutineScope.logInfo(string: String) {
+public fun CoroutineScope.logInfo(string: String) {
     Log.e("Abhi", "$string \n ${threadInfo()} \n ${coroutineInfo()}")
 }

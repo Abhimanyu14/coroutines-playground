@@ -6,7 +6,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-suspend fun launchSample() {
+public suspend fun launchSample() {
     coroutineScope {
         Log.e("Abhi", "runBlocking main ${threadInfo()}")
 

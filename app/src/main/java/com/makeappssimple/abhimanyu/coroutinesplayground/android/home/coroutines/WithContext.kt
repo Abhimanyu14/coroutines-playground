@@ -7,7 +7,7 @@ import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-suspend fun withContextSample() {
+public suspend fun withContextSample() {
     coroutineScope {
         logInfo("runBlocking starting")
 

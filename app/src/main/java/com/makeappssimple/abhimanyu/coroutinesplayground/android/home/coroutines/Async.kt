@@ -8,7 +8,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.withContext
 
-suspend fun asyncSample() {
+public suspend fun asyncSample() {
     coroutineScope {
         val total = 0
         logInfo("runBlocking starting")

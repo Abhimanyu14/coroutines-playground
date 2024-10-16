@@ -7,7 +7,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-suspend fun unconfinedDispatcherSample() {
+public suspend fun unconfinedDispatcherSample() {
     coroutineScope {
         withContext(Dispatchers.Default) {
             val coroutineScope = CoroutineScope(Dispatchers.Default)

@@ -27,7 +27,6 @@ internal class CoroutineExceptionHandler {
     @Test
     fun caughtException() {
         runBlocking {
-
             val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
                 println("Caught exception: $throwable")
             }

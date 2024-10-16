@@ -9,33 +9,31 @@ import org.junit.Assert
 import org.junit.Test
 
 internal class HomeScreenViewModelTest {
-    // region SUT
-    private lateinit var homeScreenViewModel: HomeScreenViewModel
-    // endregion
-
     @Test // (expected = IllegalStateException::class) - Not working
     fun crashApp() = runTest {
-        val standardTestDispatcher: TestDispatcher = StandardTestDispatcher(
-            scheduler = testScheduler,
-        )
         val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
             Assert.assertEquals(
                 true,
                 throwable is IllegalStateException,
             )
         }
+        val standardTestDispatcher: TestDispatcher = StandardTestDispatcher(
+            scheduler = testScheduler,
+        )
         val testScope = TestScope(
             context = standardTestDispatcher + coroutineExceptionHandler,
         )
-        homeScreenViewModel = HomeScreenViewModel(
+        val homeScreenViewModel = HomeScreenViewModel(
             coroutineScope = testScope,
         )
 
         homeScreenViewModel.crashApp()
 
         // Not working
-//        Assert.assertThrows(IllegalStateException::class.java) {
-//            homeScreenViewModel.crashApp()
-//        }
+        /*
+        Assert.assertThrows(IllegalStateException::class.java) {
+            homeScreenViewModel.crashApp()
+        }
+        */
     }
 }

@@ -1,43 +1,41 @@
 package com.makeappssimple.abhimanyu.coroutinesplayground.android.home
 
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestDispatcher
-import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Test
 
 internal class HomeScreenViewModelTest {
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @Test // (expected = IllegalStateException::class) - Not working
+    @Test
     fun crashApp() = runTest {
+        var exception: Throwable? = null
+        val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+            exception = throwable
+        }
+
         val standardTestDispatcher: TestDispatcher = StandardTestDispatcher(
             scheduler = testScheduler,
         )
-        val testScope = TestScope(
-            context = standardTestDispatcher,
+        val testScope = CoroutineScope(
+            standardTestDispatcher + coroutineExceptionHandler + SupervisorJob()
         )
         val homeScreenViewModel = HomeScreenViewModel(
             coroutineScope = testScope,
         )
-
-        val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-            println("Caught exception: $throwable")
-        }
-
-        val job = homeScreenViewModel.crashApp(
-            context = coroutineExceptionHandler,
-        )
+        val job = homeScreenViewModel.crashApp()
         job.join()
 
-        println("Test completed")
-
-        // Not working
-        /*
-        Assert.assertThrows(IllegalStateException::class.java) {
-            homeScreenViewModel.crashApp()
-        }
-        */
+        Assert.assertEquals(
+            true,
+            exception is IllegalStateException,
+        )
+        Assert.assertEquals(
+            "Crash App Test",
+            exception?.message,
+        )
     }
 }

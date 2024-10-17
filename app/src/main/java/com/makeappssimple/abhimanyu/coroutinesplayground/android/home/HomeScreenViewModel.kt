@@ -8,8 +8,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
 
 @HiltViewModel
 public class HomeScreenViewModel @Inject constructor(
@@ -17,10 +15,8 @@ public class HomeScreenViewModel @Inject constructor(
 ) : ViewModel(
     viewModelScope = coroutineScope,
 ) {
-    public fun crashApp(
-        context: CoroutineContext = EmptyCoroutineContext,
-    ): Job {
-        return viewModelScope.launch(context) {
+    public fun crashApp(): Job {
+        return viewModelScope.launch {
             println("Throwing exception")
             throw IllegalStateException("Crash App Test")
         }
